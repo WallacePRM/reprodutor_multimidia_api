@@ -14,5 +14,6 @@ public class Media
     public string? Album { get; set; }
     public string? Title { get; set; }
     public float? Duration { get; set; }
+    public DateTime? ReleaseDate { get; set; }
     public string? Thumbnail { get; set; }
 }

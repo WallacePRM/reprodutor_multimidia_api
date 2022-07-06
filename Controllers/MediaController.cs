@@ -95,6 +95,7 @@ public class MediasController : ControllerBase
                 {
                     var video = new VideoTrack().GetVideoInfo(filePath, picturePath);
                     media.Duration = video.Duration;
+                    media.ReleaseDate = System.IO.File.GetLastWriteTimeUtc(filePath);
                 }
 
                 if (GetMediaTypeFromFileName(file.FileName) == Media.TypeMusic)
@@ -253,6 +254,7 @@ public class MediasController : ControllerBase
             Name = media.Name,
             Type = GetMediaTypeFromFileName(media.FileName),
             Src =  $"{Request.Scheme}://{Request.Host}/medias/{media.Id}",
+            ReleaseDate = media.ReleaseDate,
             Author = media.Author,
             Album = media.Album,
             Title = media.Title,
