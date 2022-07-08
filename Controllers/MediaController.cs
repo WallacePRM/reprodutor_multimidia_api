@@ -20,14 +20,14 @@ public class MediasController : ControllerBase
     }
 
     [HttpGet("")]
-    public async Task<IActionResult> GetMedias()
+    public async Task<IActionResult> GetMedias([FromQuery] int offset, [FromQuery] int limit)
     {
         try
         {
             // this._dbContext.Medias.RemoveRange(this._dbContext.Medias.ToList());
             // await this._dbContext.SaveChangesAsync();
 
-            var dbMedias = await this._dbContext.Medias.ToListAsync();
+            var dbMedias = await this._dbContext.Medias.Skip(offset).Take(limit).ToListAsync();
             var medias = dbMedias.Select(x => MapMedia(x)).ToList();
 
             return Ok(medias);
