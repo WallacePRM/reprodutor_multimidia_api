@@ -24,9 +24,6 @@ public class MediasController : ControllerBase
     {
         try
         {
-            // this._dbContext.Medias.RemoveRange(this._dbContext.Medias.ToList());
-            // await this._dbContext.SaveChangesAsync();
-
             var dbMedias = await this._dbContext.Medias.Skip(offset).Take(limit).ToListAsync();
             var medias = dbMedias.Select(x => MapMedia(x)).ToList();
 
