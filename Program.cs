@@ -9,7 +9,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .WriteTo.Console()
     .WriteTo.File(
-        System.IO.Path.Combine(Environment.GetEnvironmentVariable("HOME") ?? Environment.CurrentDirectory, "LogFiles", "Application", "diagnostics.txt"),
+        System.IO.Path.Combine(Environment.CurrentDirectory, "Logs", "logs.txt"),
         rollingInterval: RollingInterval.Day,
         fileSizeLimitBytes: 10 * 1024 * 1024,
         retainedFileCountLimit: 2,
